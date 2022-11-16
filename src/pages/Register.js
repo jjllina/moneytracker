@@ -1,11 +1,12 @@
 import {Form, Button, Container, Row, Col} from 'react-bootstrap'
 import {useState, useEffect, useContext} from 'react'
 import UserContext from '../UserContext'
-import {Navigate, Link} from 'react-router-dom'
+import {Navigate, useNavigate, Link} from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const Register = () => {
-	const {user, setUser} = useContext(UserContext)
+	const {user} = useContext(UserContext)
+	const history = useNavigate()
 
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
@@ -51,7 +52,7 @@ const Register = () => {
 				<Row className="justify-content-around align-items-center vh-100 m-0 p-0">
 					<Col xs="10" md="5" align="center">
 						<Form onSubmit={e => registerUser(e)} className="formLogin">
-							<h2 className="pb-2 pt-2">Login</h2>
+							<h2 className="pb-2 pt-2">Register</h2>
 
 							<Form.Group className="mb-3" controlId="username">
 								<Form.Control type="username" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />

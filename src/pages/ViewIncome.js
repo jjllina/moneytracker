@@ -1,10 +1,17 @@
-import {Nav, Container, Row, Col} from 'react-bootstrap'
+import {Nav, Container, Row, Col, Table} from 'react-bootstrap'
 import React, {useContext} from 'react'
 import {Navigate, Link} from 'react-router-dom'
 import UserContext from '../UserContext'
 
-function Home() {
+function ViewIncome() {
 	const {user} = useContext(UserContext)
+
+	const data = [
+	  { name: "Anom", age: 19, gender: "Male", q: "Anom", w: 19, e: "Male", r: "Anom", t: 19, y: "Male" },
+	  { name: "Megha", age: 19, gender: "Female", q: "Megha", w: 19, e: "Female", r: "Megha", t: 19, y: "Female" },
+	  { name: "Subham", age: 25, gender: "Male", q: "Subham", w: 25, e: "Male", r: "Subham", t: 25, y: "Male" },
+	]
+	 
 
 	return (
 		(user.id !== null) ?
@@ -27,14 +34,72 @@ function Home() {
 				</Col>
 				<Col md="9">
 					<p></p>
-					<p>Welcome to Finance Tracker!</p>
-					<p>The goal of this application is to track your annual salary and income taxes. This also has a feature that you can track all your expenses and savings based on your declared salaries.</p>
+					<label>Year: </label>
+		    		<select>
+			    		<option value="2022" selected>2022</option>
+			    		<option value="2023">2023</option>
+			    		<option value="2024">2024</option>
+			    		<option value="2025">2025</option>
+			    		<option value="2026">2026</option>
+			    		<option value="2027">2027</option>
+			    		<option value="2028">2028</option>
+			    		<option value="2029">2029</option>
+			    		<option value="2030">2030</option>
+			    	</select>
+			    	<p></p>
+			    	<div className="App">
+			    	    <Table>
+			    	    	<thead>
+				    	       	<tr>
+				    	        	<th>Date</th>
+				    	        	<th>Gross Income</th>
+				    	        	<th>Basic Salary</th>
+				    	        	<th>Non-Taxables</th>
+				    	        	<th>SSS Contribution</th>
+				    	        	<th>Philhealth Contribution</th>
+				    	        	<th>Pagibig Contribution</th>
+				    	        	<th>Tax Withheld</th>
+				    	        	<th>Net Income</th>
+				    	       	</tr>
+				    	    </thead>
+
+				    	    <tbody>
+	    		    	       	{data.map((val, key) => {
+	    		    	        	return (
+	    		    	           	<tr key={key}>
+	    	    	            		<td>{val.name}</td>
+	    	    	            		<td>{val.age}</td>
+	    	    	            		<td>{val.gender}</td>
+	    	    	            		<td>{val.q}</td>
+	    	    	            		<td>{val.w}</td>
+	    	    	            		<td>{val.e}</td>
+	    	    	            		<td>{val.r}</td>
+	    	    	            		<td>{val.t}</td>
+	    	    	            		<td>{val.y}</td>
+	    		    	           	</tr>
+	    		    	        	)
+	    		    	       	})}
+
+	    		    	       	<tr>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    			    	       	<td>Total</td>
+	    		    	       	</tr>
+				    	    </tbody>
+			    	    </Table>
+		    	  	</div>
 				</Col>
 		    </Row>
 		</Container>
 	)
 }
 
-export default Home
+export default ViewIncome
 
 

@@ -1,12 +1,13 @@
 import {BrowserRouter as Router} from 'react-router-dom'
 import {Container} from 'react-bootstrap'
 import PageNotFound from './components/PageNotFound'
+import AppNavbar from './components/AppNavbar'
 import {Route, Routes} from 'react-router-dom'
-import AppNav from './components/AppNav'
 import {UserProvider} from './UserContext'
 import {useState} from 'react'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import AddIncome from './pages/AddIncome'
 import ViewIncome from './pages/ViewIncome'
 import ViewAnnual from './pages/ViewAnnual'
@@ -33,6 +34,7 @@ function App() {
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/" element={<Login />} />
             <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
             <Route exact path="/addIncome" element={<AddIncome />} />
             <Route exact path="/viewIncome" element={<ViewIncome />} />
             <Route exact path="/viewAnnual" element={<ViewAnnual />} />

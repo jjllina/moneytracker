@@ -16,12 +16,12 @@ function Home() {
 				<Col md="3">
 					<Nav className="flex-column">
 						<Nav.Link classname="page" href="/home">Home</Nav.Link>
-						<Nav.Link href="/addIncome">Add Income</Nav.Link>
-						<Nav.Link href="/viewIncome">View Monthly Income</Nav.Link>
-						<Nav.Link href="/viewAnnual">View Annual Salary</Nav.Link>
-						<Nav.Link href="/addExpense">Add Expense</Nav.Link>
-						<Nav.Link href="/viewExpense">View Expenses</Nav.Link>
-						<Nav.Link href="/logout">Logout</Nav.Link>
+						<Nav.Link classname="links" href="/addIncome">Add Income</Nav.Link>
+						<Nav.Link classname="links" href="/viewIncome">View Monthly Income</Nav.Link>
+						<Nav.Link classname="links" href="/viewAnnual">View Annual Salary</Nav.Link>
+						<Nav.Link classname="links" href="/addExpense">Add Expense</Nav.Link>
+						<Nav.Link classname="links" href="/viewExpense">View Expenses</Nav.Link>
+						<Nav.Link classname="links" href="/logout">Logout</Nav.Link>
 					</Nav>
 					<p></p>
 				</Col>
