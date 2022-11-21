@@ -19,7 +19,7 @@ function ViewExpense() {
 
 	const viewFixed = e => {
 		e.preventDefault()
-		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/expensef/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -37,7 +37,7 @@ function ViewExpense() {
 	}
 
 	const viewOthers = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/expenseo/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -51,7 +51,7 @@ function ViewExpense() {
 	}
 
 	const viewTotalFixed = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/totalf/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -64,7 +64,7 @@ function ViewExpense() {
 	}
 
 	const viewTotalOthers = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/totalo/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -77,7 +77,7 @@ function ViewExpense() {
 	}
 
 	const viewTotal = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/totalm/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -90,7 +90,7 @@ function ViewExpense() {
 	}
 
 	const viewIncome = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/income/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
