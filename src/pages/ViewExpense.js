@@ -10,12 +10,18 @@ function ViewExpense() {
 	const [others, setOthers] = useState([])
 	const [totalFixed, setTotalFixed] = useState()
 	const [totalOthers, setTotalOthers] = useState()
-	const [total, setTotal] = useState()
-	const [income, setIncome] = useState()
+	const [total, setTotal] = useState(0)
+	const [income, setIncome] = useState(0)
 	const [year, setYear] = useState('')
 	const [month, setMonth] = useState('')
 
-	const saving = income - total
+	const saving = 0
+
+	if(total == 0 && income ==0) {
+		saving = 0
+	} else {
+		saving = income - total
+	}
 
 	const viewFixed = e => {
 		e.preventDefault()
@@ -205,7 +211,7 @@ function ViewExpense() {
     	        		    	       	<tr>
     	        			    	       	<td>{income}</td>
     	        			    	       	<td>{total}</td>
-    	        			    	       	<td>{total - income}</td>
+    	        			    	       	<td>{saving}</td>
     	        		    	       	</tr>
     	    			    	    </tbody>
     	    		    	    </Table>
