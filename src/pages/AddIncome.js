@@ -83,6 +83,7 @@ function AddIncome() {
 					<Nav className="flex-column">
 						<Nav.Link as={Link} to="/">Home</Nav.Link>
 						<Nav.Link className="page" as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link as={Link} to="/addBonus">Add 13th/14th Month Pay</Nav.Link>
 						<Nav.Link as={Link} to="/viewIncome">View Monthly Income</Nav.Link>
 						<Nav.Link as={Link} to="/viewAnnual">View Annual Salary</Nav.Link>
 						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
@@ -218,6 +219,9 @@ function AddIncome() {
 					</form>
 					
 				</Col>
+		    </Row>
+		    <Row className="justify-content-center footer">
+		      	Created by : Sofronas 2022
 		    </Row>
 		</Container>
 	)

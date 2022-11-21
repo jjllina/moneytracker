@@ -61,7 +61,7 @@ Table {
 
 .otherExpense {
   display: block;
-  max-height: 500px;
+  max-height: 480px;
   overflow: auto;
 }
 
@@ -73,8 +73,29 @@ Table {
 
 .view {
   display: block;
-  max-height: 500px;
+  max-height: 300px;
   overflow: auto;
+}
+
+.view::-webkit-scrollbar {
+  width: 5px;
+}
+
+.view::-webkit-scrollbar-track {
+  background: #dee2e6; 
+}
+
+.view::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.view::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.taxView {
+  display: block;
+  max-width: 700px;
 }
 
 tfoot tr {

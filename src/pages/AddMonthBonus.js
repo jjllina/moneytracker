@@ -12,7 +12,7 @@ function AddMonthBonus() {
 	const [day, setDay] = useState('')
 	const [year, setYear] = useState('')
 	const [TWH, setTWH] = useState()
-	const [amount, setAmount] = useState()
+	const [totalAmount, setTotalAmount] = useState()
 	
 	const addBonus = e => {
 		e.preventDefault()
@@ -26,19 +26,19 @@ function AddMonthBonus() {
 				month : month,
 			    day : day,
 			    year : year,
-			    amount : amount,
+			    totalAmount : totalAmount,
 			    TWH : TWH
 			})
 		})
 		.then(res => res.json())
-		.then(data => {
-			Swal.fire({
+		.then(data => data)
+
+		Swal.fire({
 			title : "13th/14th Month pay is saved.",
 			icon : "success"
 			})
 
-			history("/")
-		})
+		history("/")
 	}
 
 	return (
@@ -51,7 +51,8 @@ function AddMonthBonus() {
 				<Col md="2">
 					<Nav className="flex-column">
 						<Nav.Link as={Link} to="/">Home</Nav.Link>
-						<Nav.Link className="page" as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link className="page" as={Link} to="/addBonus">Add 13th/14th Month Pay</Nav.Link>
 						<Nav.Link as={Link} to="/viewIncome">View Monthly Income</Nav.Link>
 						<Nav.Link as={Link} to="/viewAnnual">View Annual Salary</Nav.Link>
 						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
@@ -152,7 +153,7 @@ function AddMonthBonus() {
 				        		<label>13th/14th Month Pay:</label>
 				        	</Col>
 				        	<Col>
-				        		<input type="number" min="0" value={amount} onChange={e => setAmount(e.target.value)} />
+				        		<input type="number" min="0" value={totalAmount} onChange={e => setTotalAmount(e.target.value)} />
 				        	</Col>
 				        </Row>
 				        <p></p>
@@ -169,6 +170,9 @@ function AddMonthBonus() {
 					</form>
 					
 				</Col>
+		    </Row>
+		    <Row className="justify-content-center footer">
+		      	Created by : Sofronas 2022
 		    </Row>
 		</Container>
 	)

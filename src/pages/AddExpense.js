@@ -49,10 +49,11 @@ function AddExpense() {
 		<Container fluid className="vw-100 m-0 p-0">
 			<p className="text-center header">Finance Tracker</p>
 		    <Row className="vw-100">
-				<Col md="3">
+				<Col md="2">
 					<Nav className="flex-column">
 						<Nav.Link as={Link} to="/">Home</Nav.Link>
 						<Nav.Link as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link as={Link} to="/addBonus">Add 13th/14th Month Pay</Nav.Link>
 						<Nav.Link as={Link} to="/viewIncome">View Monthly Income</Nav.Link>
 						<Nav.Link as={Link} to="/viewAnnual">View Annual Salary</Nav.Link>
 						<Nav.Link className="page" as={Link} to="/addExpense">Add Expense</Nav.Link>
@@ -60,7 +61,7 @@ function AddExpense() {
 						<Nav.Link as={Link} to="/logout">Logout</Nav.Link>
 					</Nav>
 				</Col>
-				<Col md="9">
+				<Col md="10">
 					<p></p>
 					<form onSubmit={e => addExpense(e)}>
 						<Row>
@@ -182,6 +183,9 @@ function AddExpense() {
 				        <input type="submit" />
 					</form>
 				</Col>
+		    </Row>
+		    <Row className="justify-content-center footer">
+		      	Created by : Sofronas 2022
 		    </Row>
 		</Container>
 	)

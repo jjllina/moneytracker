@@ -17,6 +17,7 @@ function Home() {
 					<Nav className="flex-column">
 						<Nav.Link className="page" as={Link} to="/">Home</Nav.Link>
 						<Nav.Link as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link as={Link} to="/addBonus">Add 13th/14th Month Pay</Nav.Link>
 						<Nav.Link as={Link} to="/viewIncome">View Monthly Income</Nav.Link>
 						<Nav.Link as={Link} to="/viewAnnual">View Annual Salary</Nav.Link>
 						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
@@ -30,6 +31,9 @@ function Home() {
 					<p>Welcome to Finance Tracker!</p>
 					<p>The goal of this application is to track your annual salary and income taxes. This also has a feature that you can track all your expenses and savings based on your declared salaries.</p>
 				</Col>
+		    </Row>
+		    <Row className="justify-content-center footer">
+		      	Created by : Sofronas 2022
 		    </Row>
 		</Container>
 	)
