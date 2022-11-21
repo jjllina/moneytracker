@@ -1,51 +1,163 @@
 import {Nav, Container, Row, Col, Table} from 'react-bootstrap'
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {Navigate, Link} from 'react-router-dom'
 import UserContext from '../UserContext'
 
 function ViewExpense() {
 	const {user} = useContext(UserContext)
 
-	const data = [
-	  { name: "Anom", age: 19, gender: "Male" },
-	  { name: "Megha", age: 19, gender: "Female" },
-	  { name: "Subham", age: 25, gender: "Male" },
-	]
-	 
+	const [fixed, setFixed] = useState([])
+	const [others, setOthers] = useState([])
+	const [totalFixed, setTotalFixed] = useState()
+	const [totalOthers, setTotalOthers] = useState()
+	const [total, setTotal] = useState()
+	const [income, setIncome] = useState()
+	const [year, setYear] = useState('')
+	const [month, setMonth] = useState('')
+
+	const saving = income - total
+
+	const viewFixed = e => {
+		e.preventDefault()
+		fetch(`http://localhost:4000/expensef/${year}/${month}`, {
+			method : 'GET',
+			headers : {
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => setFixed(data))
+
+		viewOthers()
+		viewTotalFixed()
+		viewTotalOthers()
+		viewTotal()
+		viewIncome()
+		
+	}
+
+	const viewOthers = () => {
+		fetch(`http://localhost:4000/expenseo/${year}/${month}`, {
+			method : 'GET',
+			headers : {
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			setOthers(data)
+		})
+
+	}
+
+	const viewTotalFixed = () => {
+		fetch(`http://localhost:4000/totalf/${year}/${month}`, {
+			method : 'GET',
+			headers : {
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			setTotalFixed(data[0])
+		})
+	}
+
+	const viewTotalOthers = () => {
+		fetch(`http://localhost:4000/totalo/${year}/${month}`, {
+			method : 'GET',
+			headers : {
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			setTotalOthers(data[0])
+		})
+	}
+
+	const viewTotal = () => {
+		fetch(`http://localhost:4000/totalm/${year}/${month}`, {
+			method : 'GET',
+			headers : {
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			setTotal(data[0])
+		})
+	}
+
+	const viewIncome = () => {
+		fetch(`http://localhost:4000/income/${year}/${month}`, {
+			method : 'GET',
+			headers : {
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			setIncome(data[0])
+		})
+	}
 
 	return (
-		(user.id !== null) ?
-			<Navigate to="/" />
+		(user.id === null) ?
+			<Navigate to="/login" />
 		:
 		<Container fluid className="vw-100 m-0 p-0">
 			<p className="text-center header">Finance Tracker</p>
 		    <Row className="vw-100">
 				<Col md="3">
 					<Nav className="flex-column">
-						<Nav.Link href="/home">Home</Nav.Link>
-						<Nav.Link href="/addIncome">Add Income</Nav.Link>
-						<Nav.Link classname="page" href="/viewIncome">View Monthly Income</Nav.Link>
-						<Nav.Link href="/viewAnnual">View Annual Salary</Nav.Link>
-						<Nav.Link href="/addExpense">Add Expense</Nav.Link>
-						<Nav.Link href="/viewExpense">View Expenses</Nav.Link>
-						<Nav.Link href="/logout">Logout</Nav.Link>
+						<Nav.Link as={Link} to="/">Home</Nav.Link>
+						<Nav.Link as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link as={Link} to="/viewIncome">View Monthly Income</Nav.Link>
+						<Nav.Link as={Link} to="/viewAnnual">View Annual Salary</Nav.Link>
+						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
+						<Nav.Link className="page" as={Link} to="/viewExpense">View Expenses</Nav.Link>
+						<Nav.Link as={Link} to="/logout">Logout</Nav.Link>
 					</Nav>
 					<p></p>
 				</Col>
 				<Col md="9">
 					<p></p>
-					<label>Year: </label>
-		    		<select>
-			    		<option value="2022" selected>2022</option>
-			    		<option value="2023">2023</option>
-			    		<option value="2024">2024</option>
-			    		<option value="2025">2025</option>
-			    		<option value="2026">2026</option>
-			    		<option value="2027">2027</option>
-			    		<option value="2028">2028</option>
-			    		<option value="2029">2029</option>
-			    		<option value="2030">2030</option>
-			    	</select>
+					<form onSubmit={e => viewFixed(e)}>
+						<label>Year: </label>
+			    		<select onChange={e => setYear(e.target.value)}>
+			    			<option value="none">----</option>
+				    		<option value="2022">2022</option>
+				    		<option value="2023">2023</option>
+				    		<option value="2024">2024</option>
+				    		<option value="2025">2025</option>
+				    		<option value="2026">2026</option>
+				    		<option value="2027">2027</option>
+				    		<option value="2028">2028</option>
+				    		<option value="2029">2029</option>
+				    		<option value="2030">2030</option>
+				    	</select>
+				    	<span>      </span>
+
+				    	<label>Month: </label>
+			    		<select onChange={e => setMonth(e.target.value)}>
+				    		<option value="none">----</option>
+				    		<option value="JAN">January</option>
+				    		<option value="FEB">February</option>
+				    		<option value="MAR">March</option>
+				    		<option value="APR">April</option>
+				    		<option value="MAY">May</option>
+				    		<option value="JUN">June</option>
+				    		<option value="JUL">July</option>
+				    		<option value="AUG">August</option>
+				    		<option value="SEP">September</option>
+				    		<option value="OCT">October</option>
+				    		<option value="NOV">November</option>
+				    		<option value="DEC">December</option>
+				    	</select>
+				    	<span>      </span>
+				    	<input type="submit" />
+			    	</form>
 			    	<p></p>
 			    	<div className="App">
 			    		<Row>
@@ -60,24 +172,42 @@ function ViewExpense() {
 						    	       	</tr>
 						    	    </thead>
 
-						    	    <tbody>
-			    		    	       	{data.map((val, key) => {
-			    		    	        	return (
-			    		    	           	<tr key={key}>
-			    	    	            		<td>{val.name}</td>
-			    	    	            		<td>{val.age}</td>
-			    	    	            		<td>{val.gender}</td>
-			    		    	           	</tr>
-			    		    	        	)
-			    		    	       	})}
-
-			    		    	       	<tr>
-			    			    	       	<td>Total</td>
-			    			    	       	<td>Total</td>
-			    			    	       	<td>Total</td>
-			    		    	       	</tr>
+						    	    <tbody className="fixedExpense">
+						    	    	{fixed.map(fix => {
+						    	    		return (
+    						    	    		<tr>
+    			    	    	            		<td>{fix.month}-{fix.day}-{fix.year}</td>
+    			    	    	            		<td>{fix.category}</td>
+    			    	    	            		<td>{fix.price}</td>
+    			    		    	           	</tr>
+						    	    		)
+						    	    	})}
 						    	    </tbody>
+    	    			    	    <tfoot>
+    	        	        	       	<tr>
+    	        	    	    	       	<td>Total</td>
+    	        	    	    	       	<td></td>
+    	        	    	    	       	<td>{totalFixed}</td>
+    	        	        	       	</tr>
+    	    			    	    </tfoot>
 					    	    </Table>
+    	    		    	    <Table>
+    	    		    	    	<thead>
+    	    			    	       	<tr>
+    	    			    	        	<th>Income</th>
+    	    			    	        	<th>Expense</th>
+    	    			    	        	<th>Savings</th>
+    	    			    	       	</tr>
+    	    			    	    </thead>
+
+    	    			    	    <tbody>
+    	        		    	       	<tr>
+    	        			    	       	<td>{income}</td>
+    	        			    	       	<td>{total}</td>
+    	        			    	       	<td>{saving}</td>
+    	        		    	       	</tr>
+    	    			    	    </tbody>
+    	    		    	    </Table>
 			    			</Col>
 			    			<Col>
 			    				<p>Other Expenses</p>
@@ -89,24 +219,24 @@ function ViewExpense() {
 						    	        	<th>Price</th>
 						    	       	</tr>
 						    	    </thead>
-
-						    	    <tbody>
-			    		    	       	{data.map((val, key) => {
-			    		    	        	return (
-			    		    	           	<tr key={key}>
-			    	    	            		<td>{val.name}</td>
-			    	    	            		<td>{val.age}</td>
-			    	    	            		<td>{val.gender}</td>
-			    		    	           	</tr>
-			    		    	        	)
-			    		    	       	})}
-
-			    		    	       	<tr>
-			    			    	       	<td>Total</td>
-			    			    	       	<td>Total</td>
-			    			    	       	<td>Total</td>
-			    		    	       	</tr>
+						    	    <tbody className="otherExpense">
+    	        		    	       	{others.map(oth => {
+    	        		    	       		return (
+       						    	    		<tr>
+       			    	    	            		<td>{oth.month}-{oth.day}-{oth.year}</td>
+       			    	    	            		<td>{oth.category}</td>
+       			    	    	            		<td>{oth.price}</td>
+       			    		    	           	</tr>
+    	        		    	       		)
+						    	    	})}
 						    	    </tbody>
+						    	    <tfoot>
+			    	        	       	<tr>
+			    	    	    	       	<td>Total</td>
+			    	    	    	       	<td></td>
+			    	    	    	       	<td>{totalOthers}</td>
+			    	        	       	</tr>
+						    	    </tfoot>
 					    	    </Table>
 			    			</Col>
 			    		</Row>

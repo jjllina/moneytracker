@@ -1,50 +1,117 @@
 import {Nav, Container, Row, Col} from 'react-bootstrap'
-import React, {useContext} from 'react'
-import {Navigate, Link} from 'react-router-dom'
+import React, {useContext, useState} from 'react'
+import {Navigate, Link, useNavigate} from 'react-router-dom'
 import UserContext from '../UserContext'
+import Swal from 'sweetalert2'
 
 function AddIncome() {
 	const {user} = useContext(UserContext)
+	const history = useNavigate()
+
+	const [month, setMonth] = useState('')
+	const [day, setDay] = useState('')
+	const [year, setYear] = useState('')
+	const [grossIncome, setGrossIncome] = useState()
+	const [basicSalary, setBasicSalary] = useState()
+	const [nonTaxables, setNonTaxables] = useState()
+	const [TWH, setTWH] = useState()
+	const [type, setType] = useState()
+	const [amount, setAmount] = useState()
+
+	const addIncome = e => {
+		e.preventDefault()
+		fetch('http://localhost:4000/newIncome', {
+			method : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			},
+			body : JSON.stringify({
+				month : month,
+			    day : day,
+			    year : year,
+			    grossIncome : grossIncome,
+			    nonTaxables : nonTaxables,
+			    TWH : TWH,
+			    basicSalary : basicSalary
+			})
+		})
+		.then(res => res.json())
+		.then(data => data)
+
+		Swal.fire({
+		title : "Income is saved.",
+		icon : "success"
+		})
+	}
+	
+	const addBonus = e => {
+		e.preventDefault()
+		fetch('http://localhost:4000/newMonth', {
+			method : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				Authorization : `Bearer ${localStorage.getItem('token')}`
+			},
+			body : JSON.stringify({
+				month : month,
+			    day : day,
+			    year : year,
+			    amount : amount,
+			    TWH : TWH
+			})
+		})
+		.then(res => res.json())
+		.then(data => {
+			Swal.fire({
+			title : "13th/14th Month pay is saved.",
+			icon : "success"
+			})
+
+			history("/")
+		})
+	}
 
 	return (
-		(user.id !== null) ?
-			<Navigate to="/" />
+		(user.id === null) ?
+			<Navigate to="/login" />
 		:
 		<Container fluid className="vw-100 m-0 p-0">
 			<p className="text-center header">Finance Tracker</p>
 		    <Row className="vw-100">
-				<Col md="3">
+				<Col md="2">
 					<Nav className="flex-column">
-						<Nav.Link href="/home">Home</Nav.Link>
-						<Nav.Link classname="page" href="/addIncome">Add Income</Nav.Link>
-						<Nav.Link href="/viewIncome">View Monthly Income</Nav.Link>
-						<Nav.Link href="/viewAnnual">View Annual Salary</Nav.Link>
-						<Nav.Link href="/addExpense">Add Expense</Nav.Link>
-						<Nav.Link href="/viewExpense">View Expenses</Nav.Link>
-						<Nav.Link href="/logout">Logout</Nav.Link>
+						<Nav.Link as={Link} to="/">Home</Nav.Link>
+						<Nav.Link className="page" as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link as={Link} to="/viewIncome">View Monthly Income</Nav.Link>
+						<Nav.Link as={Link} to="/viewAnnual">View Annual Salary</Nav.Link>
+						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
+						<Nav.Link as={Link} to="/viewExpense">View Expenses</Nav.Link>
+						<Nav.Link as={Link} to="/logout">Logout</Nav.Link>
 					</Nav>
 				</Col>
-				<Col md="9">
+				<Col md="10">
 					<p></p>
-					<form>
+			        <form onSubmit={e => addIncome(e)}>
 						<Row>
 							<Col md="2">
 						    	<label>Month:</label>
 						    </Col>
 						    <Col>
-						        <select>
-						        	<option value="1" selected>January</option>
-						        	<option value="2">February</option>
-						        	<option value="3">March</option>
-						        	<option value="4">April</option>
-						        	<option value="5">May</option>
-						        	<option value="6">June</option>
-						        	<option value="7">July</option>
-						        	<option value="8">August</option>
-						        	<option value="9">September</option>
-						        	<option value="10">October</option>
-						        	<option value="11">November</option>
-						        	<option value="12">December</option>
+						        <select onChange={e => setMonth(e.target.value)}>
+						        	<option value="none">----</option>
+						        	<option value="JAN">January</option>
+						        	<option value="FEB">February</option>
+						        	<option value="MAR">March</option>
+						        	<option value="APR">April</option>
+						        	<option value="MAY">May</option>
+						        	<option value="JUN">June</option>
+						        	<option value="JUL">July</option>
+						        	<option value="AUG">August</option>
+						        	<option value="SEP">September</option>
+						        	<option value="OCT">October</option>
+						        	<option value="NOV">November</option>
+						        	<option value="DEC">December</option>
 						        </select>
 						    </Col>  
 					    </Row>
@@ -54,16 +121,17 @@ function AddIncome() {
 					    		<label>Day:</label>
 					    	</Col>
 					    	<Col>
-					    		<select>
-						    		<option value="1" selected>01</option>
-						    		<option value="2">02</option>
-						    		<option value="3">03</option>
-						    		<option value="4">04</option>
-						    		<option value="5">05</option>
-						    		<option value="6">06</option>
-						    		<option value="7">07</option>
-						    		<option value="8">08</option>
-						    		<option value="9">09</option>
+					    		<select onChange={e => setDay(e.target.value)}>
+					    			<option value="none">----</option>
+						    		<option value="01">01</option>
+						    		<option value="02">02</option>
+						    		<option value="03">03</option>
+						    		<option value="04">04</option>
+						    		<option value="05">05</option>
+						    		<option value="06">06</option>
+						    		<option value="07">07</option>
+						    		<option value="08">08</option>
+						    		<option value="09">09</option>
 						    		<option value="10">10</option>
 						    		<option value="11">11</option>
 						    		<option value="12">12</option>
@@ -95,8 +163,9 @@ function AddIncome() {
 				        		<label>Year:</label>
 				        	</Col>
 				        	<Col>
-				        		<select>
-				    	    		<option value="2022" selected>2022</option>
+				        		<select onChange={e => setYear(e.target.value)}>
+				        			<option value="none">----</option>
+				    	    		<option value="2022">2022</option>
 				    	    		<option value="2023">2023</option>
 				    	    		<option value="2024">2024</option>
 				    	    		<option value="2025">2025</option>
@@ -114,7 +183,7 @@ function AddIncome() {
 				        		<label>Gross Income:</label>
 				        	</Col>
 				        	<Col>
-				        		<input type="number" min="0" />
+				        		<input type="number" min="0" value={grossIncome} onChange={e => setGrossIncome(e.target.value)} />
 				        	</Col>
 				        </Row>
 				        <p></p>
@@ -123,7 +192,7 @@ function AddIncome() {
 				        		<label>Basic Salary:</label>
 				        	</Col>
 				        	<Col>
-				        		<input type="number" min="0" />
+				        		<input type="number" min="0" value={basicSalary} onChange={e => setBasicSalary(e.target.value)} />
 				        	</Col>
 				        </Row>
 				        <p></p>
@@ -132,7 +201,7 @@ function AddIncome() {
 				        		<label>Non taxables:</label>
 				        	</Col>
 				        	<Col>
-				        		<input type="number" min="0" />
+				        		<input type="number" min="0" value={nonTaxables} onChange={e => setNonTaxables(e.target.value)} />
 				        	</Col>
 				        </Row>
 				        <p></p>
@@ -141,12 +210,13 @@ function AddIncome() {
 				        		<label>Tax Withheld:</label>
 				        	</Col>
 				        	<Col>
-				        		<input type="number" min="0" />
+				        		<input type="number" min="0" value={TWH} onChange={e => setTWH(e.target.value)} />
 				        	</Col>
 				        </Row>
 				        <p></p>
 				        <input type="submit" />
 					</form>
+					
 				</Col>
 		    </Row>
 		</Container>

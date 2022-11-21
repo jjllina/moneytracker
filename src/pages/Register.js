@@ -10,20 +10,22 @@ const Register = () => {
 
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [password1, setPassword1] = useState('')
 	const [isActive, setIsActive] = useState(false)
 
 	useEffect(() => {
-		if(username !== '' && password !== '') {
+		if(username !== '' && password === password1) {
 			setIsActive(true)
 		}
 		else {
 			setIsActive(false)
 		}
 	},
-	[username, password])
+	[username, password, password1])
 
-	const registerUser = () => {
-		fetch('localhost:4000/register', {
+	const registerUser = (e) => {
+		e.preventDefault()
+		fetch('http://localhost:4000/register', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json'
@@ -34,14 +36,24 @@ const Register = () => {
 			})
 		})
 		.then(res => res.json())
-		.then(data => data)
+		.then(data => {
+			console.log(data)
+			if(data === true) {
+				Swal.fire({
+					title : "You are now registered.",
+					icon : "success"
+				})
 
-		Swal.fire({
-			title : "You are now registered.",
-			icon : "success"
+
+				history("/login")
+
+			} else {
+				Swal.fire({
+					title : "Username already registered.",
+					icon : "error"
+				})
+			}
 		})
-
-		history("/login")
 	}
 
 	return (
@@ -60,6 +72,10 @@ const Register = () => {
 
 							<Form.Group className="mb-3" controlId="password">
 								<Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="password1">
+								<Form.Control type="password" placeholder="Confirm Password" value={password1} onChange={e => setPassword1(e.target.value)} required />
 							</Form.Group>
 
 							{ isActive ?

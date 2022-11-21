@@ -54,3 +54,35 @@
 Table {
   border: 2px solid;
 }
+
+.theader {
+  align-items: center;
+}
+
+.otherExpense {
+  display: block;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.fixedExpense {
+  display: block;
+  max-height: 380px;
+  overflow: auto;
+}
+
+.view {
+  display: block;
+  max-height: 500px;
+  overflow: auto;
+}
+
+tfoot tr {
+  border-top: 1.5px solid #dee2e6;
+}
+
+thead, tbody tr, tfoot tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;/* even columns width , fix width of table too*/
+}

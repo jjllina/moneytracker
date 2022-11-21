@@ -21,38 +21,40 @@ const Login = () => {
 	},
 	[username, password])
 
-	const retrieveUserDetails = () => {
-		fetch('localhost:4000/register', {
-			method : 'POST',
+	const retrieveUserDetails = (token) => {
+		fetch('http://localhost:4000/details', {
 			headers : {
-				'Content-Type' : 'application/json'
+				Authorization : `Bearer ${token}`
 			}
 		})
 		.then(res => res.json())
 		.then(data => {
 			setUser({
-				id : data._id,
+				id : data._id
 			})
+
+			
 		})
 	}
 
 	const loginUser = e => {
 		e.preventDefault()
-		fetch('localhost:4000/login', {
+		fetch('http://localhost:4000/login', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
 			body : JSON.stringify({
-				username : username.toLowerCase(),
+				username : username,
 				password : password
 			})
 		})
 		.then(res => res.json())
 		.then(data => {
-			if(data === true) {
+			if(typeof data.access !== "undefined") {
 				localStorage.setItem('token', data.access)
 				retrieveUserDetails(data.access)
+				console.log(user)
 
 				Swal.fire({
 					title : "You are now logged in.",
@@ -67,16 +69,17 @@ const Login = () => {
 			}
 			
 		})
+
 	}
 
 	return (
 		(user.id !== null) ?
-			<Navigate to="/" />
+			<Navigate to='/' />
 		:
 			<Container fluid className="front m-0 p-0">
 				<Row className="justify-content-around align-items-center vh-100 m-0 p-0">
 					<Col xs="10" md="5" align="center">
-						<Form onSubmit={e => loginUser(e)} className="formLogin">
+						<Form className="formLogin" onSubmit={e => loginUser(e)}>
 							<h2 className="pb-2 pt-2">Login</h2>
 
 							<Form.Group className="mb-3" controlId="username">

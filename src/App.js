@@ -31,8 +31,7 @@ function App() {
       <Router>
         <Container fluid className="m-0 p-0">
           <Routes>
-            <Route exact path="/home" element={<Home />} />
-            <Route exact path="/" element={<Login />} />
+            <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/addIncome" element={<AddIncome />} />

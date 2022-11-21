@@ -5,23 +5,23 @@ import UserContext from '../UserContext'
 
 function Home() {
 	const {user} = useContext(UserContext)
-
+	console.log(user)
 	return (
-		(user.id !== null) ?
-			<Navigate to="/" />
+		(user.id === null) ?
+			<Navigate to="/login" />
 		:
 		<Container fluid className="vw-100 m-0 p-0">
 			<p className="text-center header">Finance Tracker</p>
 		    <Row className="vw-100">
 				<Col md="3">
 					<Nav className="flex-column">
-						<Nav.Link classname="page" href="/home">Home</Nav.Link>
-						<Nav.Link classname="links" href="/addIncome">Add Income</Nav.Link>
-						<Nav.Link classname="links" href="/viewIncome">View Monthly Income</Nav.Link>
-						<Nav.Link classname="links" href="/viewAnnual">View Annual Salary</Nav.Link>
-						<Nav.Link classname="links" href="/addExpense">Add Expense</Nav.Link>
-						<Nav.Link classname="links" href="/viewExpense">View Expenses</Nav.Link>
-						<Nav.Link classname="links" href="/logout">Logout</Nav.Link>
+						<Nav.Link className="page" as={Link} to="/">Home</Nav.Link>
+						<Nav.Link as={Link} to="/addIncome">Add Income</Nav.Link>
+						<Nav.Link as={Link} to="/viewIncome">View Monthly Income</Nav.Link>
+						<Nav.Link as={Link} to="/viewAnnual">View Annual Salary</Nav.Link>
+						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
+						<Nav.Link as={Link} to="/viewExpense">View Expenses</Nav.Link>
+						<Nav.Link as={Link} to="/logout">Logout</Nav.Link>
 					</Nav>
 					<p></p>
 				</Col>
