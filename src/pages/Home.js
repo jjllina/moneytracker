@@ -13,7 +13,7 @@ function Home() {
 		<Container fluid className="vw-100 m-0 p-0">
 			<p className="text-center header">Finance Tracker</p>
 		    <Row className="vw-100">
-				<Col md="3">
+				<Col md="2">
 					<Nav className="flex-column">
 						<Nav.Link className="page" as={Link} to="/">Home</Nav.Link>
 						<Nav.Link as={Link} to="/addIncome">Add Income</Nav.Link>
@@ -26,7 +26,7 @@ function Home() {
 					</Nav>
 					<p></p>
 				</Col>
-				<Col md="9">
+				<Col md="10">
 					<p></p>
 					<p>Welcome to Finance Tracker!</p>
 					<p>The goal of this application is to track your annual salary and income taxes. This also has a feature that you can track all your expenses and savings based on your declared salaries.</p>
