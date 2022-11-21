@@ -205,7 +205,7 @@ function ViewExpense() {
     	        		    	       	<tr>
     	        			    	       	<td>{income}</td>
     	        			    	       	<td>{total}</td>
-    	        			    	       	<td>{saving}</td>
+    	        			    	       	<td>{total - income}</td>
     	        		    	       	</tr>
     	    			    	    </tbody>
     	    		    	    </Table>
