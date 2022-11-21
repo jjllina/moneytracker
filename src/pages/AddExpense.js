@@ -16,7 +16,7 @@ function AddExpense() {
 	const [price, setPrice] = useState()
 
 	const addExpense = e => {
-		fetch('http://localhost:4000/newExpense', {
+		fetch('https://powerful-meadow-76469.herokuapp.com/newExpense', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json',

@@ -19,7 +19,7 @@ function ViewExpense() {
 
 	const viewFixed = e => {
 		e.preventDefault()
-		fetch(`http://localhost:4000/expensef/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -37,7 +37,7 @@ function ViewExpense() {
 	}
 
 	const viewOthers = () => {
-		fetch(`http://localhost:4000/expenseo/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -51,7 +51,7 @@ function ViewExpense() {
 	}
 
 	const viewTotalFixed = () => {
-		fetch(`http://localhost:4000/totalf/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -64,7 +64,7 @@ function ViewExpense() {
 	}
 
 	const viewTotalOthers = () => {
-		fetch(`http://localhost:4000/totalo/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -77,7 +77,7 @@ function ViewExpense() {
 	}
 
 	const viewTotal = () => {
-		fetch(`http://localhost:4000/totalm/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -90,7 +90,7 @@ function ViewExpense() {
 	}
 
 	const viewIncome = () => {
-		fetch(`http://localhost:4000/income/${year}/${month}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/${year}/${month}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`

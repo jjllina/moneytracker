@@ -22,7 +22,7 @@ const Login = () => {
 	[username, password])
 
 	const retrieveUserDetails = (token) => {
-		fetch('http://localhost:4000/details', {
+		fetch('https://powerful-meadow-76469.herokuapp.com/details', {
 			headers : {
 				Authorization : `Bearer ${token}`
 			}
@@ -39,7 +39,7 @@ const Login = () => {
 
 	const loginUser = e => {
 		e.preventDefault()
-		fetch('http://localhost:4000/login', {
+		fetch('https://powerful-meadow-76469.herokuapp.com/login', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json'
@@ -51,7 +51,7 @@ const Login = () => {
 		})
 		.then(res => res.json())
 		.then(data => {
-			if(typeof data.access !== "undefined") {
+			if(data) {
 				localStorage.setItem('token', data.access)
 				retrieveUserDetails(data.access)
 				console.log(user)

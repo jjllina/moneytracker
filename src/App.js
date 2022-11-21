@@ -13,6 +13,7 @@ import ViewIncome from './pages/ViewIncome'
 import ViewAnnual from './pages/ViewAnnual'
 import AddExpense from  './pages/AddExpense'
 import ViewExpense from './pages/ViewExpense'
+import AddMonthBonus from './pages/AddMonthBonus'
 import Logout from './pages/Logout'
 import Footer from './components/Footer'
 import './App.css'
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/addIncome" element={<AddIncome />} />
+            <Route exact path="/addBonus" element={<AddMonthBonus />} />
             <Route exact path="/viewIncome" element={<ViewIncome />} />
             <Route exact path="/viewAnnual" element={<ViewAnnual />} />
             <Route exact path="/addExpense" element={<AddExpense />} />

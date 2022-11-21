@@ -4,46 +4,15 @@ import {Navigate, Link, useNavigate} from 'react-router-dom'
 import UserContext from '../UserContext'
 import Swal from 'sweetalert2'
 
-function AddIncome() {
+function AddMonthBonus() {
 	const {user} = useContext(UserContext)
 	const history = useNavigate()
 
 	const [month, setMonth] = useState('')
 	const [day, setDay] = useState('')
 	const [year, setYear] = useState('')
-	const [grossIncome, setGrossIncome] = useState()
-	const [basicSalary, setBasicSalary] = useState()
-	const [nonTaxables, setNonTaxables] = useState()
 	const [TWH, setTWH] = useState()
-	const [type, setType] = useState()
 	const [amount, setAmount] = useState()
-
-	const addIncome = e => {
-		e.preventDefault()
-		fetch('https://powerful-meadow-76469.herokuapp.com/newIncome', {
-			method : 'POST',
-			headers : {
-				'Content-Type' : 'application/json',
-				Authorization : `Bearer ${localStorage.getItem('token')}`
-			},
-			body : JSON.stringify({
-				month : month,
-			    day : day,
-			    year : year,
-			    grossIncome : grossIncome,
-			    nonTaxables : nonTaxables,
-			    TWH : TWH,
-			    basicSalary : basicSalary
-			})
-		})
-		.then(res => res.json())
-		.then(data => data)
-
-		Swal.fire({
-		title : "Income is saved.",
-		icon : "success"
-		})
-	}
 	
 	const addBonus = e => {
 		e.preventDefault()
@@ -92,7 +61,7 @@ function AddIncome() {
 				</Col>
 				<Col md="10">
 					<p></p>
-			        <form onSubmit={e => addIncome(e)}>
+			        <form onSubmit={e => addBonus(e)}>
 						<Row>
 							<Col md="2">
 						    	<label>Month:</label>
@@ -180,28 +149,10 @@ function AddIncome() {
 				        <p></p>
 				        <Row>
 				        	<Col md="2">
-				        		<label>Gross Income:</label>
+				        		<label>13th/14th Month Pay:</label>
 				        	</Col>
 				        	<Col>
-				        		<input type="number" min="0" value={grossIncome} onChange={e => setGrossIncome(e.target.value)} />
-				        	</Col>
-				        </Row>
-				        <p></p>
-				        <Row>
-				        	<Col md="2">
-				        		<label>Basic Salary:</label>
-				        	</Col>
-				        	<Col>
-				        		<input type="number" min="0" value={basicSalary} onChange={e => setBasicSalary(e.target.value)} />
-				        	</Col>
-				        </Row>
-				        <p></p>
-				        <Row>
-				        	<Col md="2">
-				        		<label>Non taxables:</label>
-				        	</Col>
-				        	<Col>
-				        		<input type="number" min="0" value={nonTaxables} onChange={e => setNonTaxables(e.target.value)} />
+				        		<input type="number" min="0" value={amount} onChange={e => setAmount(e.target.value)} />
 				        	</Col>
 				        </Row>
 				        <p></p>
@@ -223,6 +174,6 @@ function AddIncome() {
 	)
 }
 
-export default AddIncome
+export default AddMonthBonus
 
 

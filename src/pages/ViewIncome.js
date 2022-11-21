@@ -13,7 +13,7 @@ function ViewIncome() {
 
 	const viewIncome = (e) => {
 		e.preventDefault()
-		fetch(`http://localhost:4000/income/${year}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/income/${year}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -27,7 +27,7 @@ function ViewIncome() {
 	}
 
 	const viewAnnual = () => {
-		fetch(`http://localhost:4000/AnnualIncome/${year}`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/AnnualIncome/${year}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`

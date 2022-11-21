@@ -25,7 +25,7 @@ const Register = () => {
 
 	const registerUser = (e) => {
 		e.preventDefault()
-		fetch('http://localhost:4000/register', {
+		fetch('https://powerful-meadow-76469.herokuapp.com/register', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json'

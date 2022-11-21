@@ -11,7 +11,7 @@ function ViewAnnual() {
 	const [total, setTotal] = useState([])
 
 	const viewAnnual = () => {
-		fetch(`http://localhost:4000/AnnualIncome`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/AnnualIncome`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -27,7 +27,7 @@ function ViewAnnual() {
 	viewAnnual()
 
 	const viewTotal = () => {
-		fetch(`http://localhost:4000/AnnualTotal`, {
+		fetch(`https://powerful-meadow-76469.herokuapp.com/AnnualTotal`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
