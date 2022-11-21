@@ -23,6 +23,7 @@ const Login = () => {
 
 	const retrieveUserDetails = (token) => {
 		fetch('https://powerful-meadow-76469.herokuapp.com/details', {
+			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${token}`
 			}
