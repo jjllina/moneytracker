@@ -23,6 +23,21 @@ function Home() {
 						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
 						<Nav.Link as={Link} to="/viewExpense">View Expenses</Nav.Link>
 						<Nav.Link as={Link} to="/logout">Logout</Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
 					</Nav>
 					<p></p>
 				</Col>
@@ -32,9 +47,7 @@ function Home() {
 					<p>The goal of this application is to track your annual salary and income taxes. This also has a feature that you can track all your expenses and savings based on your declared salaries.</p>
 				</Col>
 		    </Row>
-		    <Row className="justify-content-center footer">
-		      	Created by : Sofronas 2022
-		    </Row>
+		    <p className="text-center footer">Created by : Sofronas 2022</p>
 		</Container>
 	)
 }

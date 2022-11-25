@@ -54,6 +54,21 @@ function ViewAnnual() {
 						<Nav.Link as={Link} to="/addExpense">Add Expense</Nav.Link>
 						<Nav.Link as={Link} to="/viewExpense">View Expenses</Nav.Link>
 						<Nav.Link as={Link} to="/logout">Logout</Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
+						<Nav.Link as={Link} disabled>      </Nav.Link>
 					</Nav>
 					<p></p>
 				</Col>
@@ -109,9 +124,7 @@ function ViewAnnual() {
 			    	</div>
 			    </Col>
 			</Row>
-			<Row className="justify-content-center footer">
-			  	Created by : Sofronas 2022
-			</Row>
+			<p className="text-center footer">Created by : Sofronas 2022</p>
 		</Container>
 	)
 }
