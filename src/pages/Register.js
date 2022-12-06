@@ -25,7 +25,7 @@ const Register = () => {
 
 	const registerUser = (e) => {
 		e.preventDefault()
-		fetch('https://powerful-meadow-76469.herokuapp.com/register', {
+		fetch('https://moneytracker-6vep.onrender.com/register', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json'

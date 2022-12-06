@@ -16,7 +16,7 @@ function AddMonthBonus() {
 	
 	const addBonus = e => {
 		e.preventDefault()
-		fetch('https://powerful-meadow-76469.herokuapp.com/newMonth', {
+		fetch('https://moneytracker-6vep.onrender.com/newMonth', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json',

@@ -11,7 +11,7 @@ function ViewAnnual() {
 	const [total, setTotal] = useState([])
 
 	const viewAnnual = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/AnnualIncome`, {
+		fetch(`https://moneytracker-6vep.onrender.com/AnnualIncome`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -27,7 +27,7 @@ function ViewAnnual() {
 	viewAnnual()
 
 	const viewTotal = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/AnnualTotal`, {
+		fetch(`https://moneytracker-6vep.onrender.com/AnnualTotal`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`

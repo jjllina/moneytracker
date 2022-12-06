@@ -16,7 +16,7 @@ function AddExpense() {
 	const [price, setPrice] = useState()
 
 	const addExpense = e => {
-		fetch('https://powerful-meadow-76469.herokuapp.com/newExpense', {
+		fetch('https://moneytracker-6vep.onrender.com/newExpense', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json',

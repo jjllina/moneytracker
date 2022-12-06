@@ -14,7 +14,7 @@ function ViewIncome() {
 
 	const viewIncome = (e) => {
 		e.preventDefault()
-		fetch(`https://powerful-meadow-76469.herokuapp.com/income/${year}`, {
+		fetch(`https://moneytracker-6vep.onrender.com/income/${year}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -30,7 +30,7 @@ function ViewIncome() {
 	}
 
 	const viewAnnual = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/AnnualIncome/${year}`, {
+		fetch(`https://moneytracker-6vep.onrender.com/AnnualIncome/${year}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -41,7 +41,7 @@ function ViewIncome() {
 	}
 
 	const viewBonus = () => {
-		fetch(`https://powerful-meadow-76469.herokuapp.com/Month/${year}`, {
+		fetch(`https://moneytracker-6vep.onrender.com/Month/${year}`, {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${localStorage.getItem('token')}`
