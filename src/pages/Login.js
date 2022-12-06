@@ -22,7 +22,7 @@ const Login = () => {
 	[username, password])
 
 	const retrieveUserDetails = (token) => {
-		fetch('https://powerful-meadow-76469.herokuapp.com/details', {
+		fetch('https://moneytracker-6vep.onrender.com/details', {
 			method : 'GET',
 			headers : {
 				Authorization : `Bearer ${token}`
@@ -40,7 +40,7 @@ const Login = () => {
 
 	const loginUser = e => {
 		e.preventDefault()
-		fetch('https://powerful-meadow-76469.herokuapp.com/login', {
+		fetch('https://moneytracker-6vep.onrender.com/login', {
 			method : 'POST',
 			headers : {
 				'Content-Type' : 'application/json'
